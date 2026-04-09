@@ -1,10 +1,4 @@
 
-
-from unittest import result
-
-
-
-
 def initialize_dict(student_name, subject_grades):
     result = {}
     result[student_name] = subject_grades
@@ -36,4 +30,27 @@ def get_students(student_grades, keys):
         if not encontrado:
             print(name.title(), "not found!")
     return result
+
+def avg_by_student(student_grades, keys=None):
+    if keys is None:
+        for student in student_grades:
+            grades = student_grades[student]
+            total = 0
+            count = 0
+            for g in grades:
+                total = total + grades[g]
+                count = count + 1
+            promedio = round(total / count, 1)
+            print(student + ":", promedio)
+    else:
+        result = get_students(student_grades, keys)
+        for student in result:
+            grades = result[student]
+            total = 0
+            count = 0
+            for g in grades:
+                total = total + grades[g]
+                count = count + 1
+            promedio = round(total / count, 1)
+            print(student + ":", promedio)
 
